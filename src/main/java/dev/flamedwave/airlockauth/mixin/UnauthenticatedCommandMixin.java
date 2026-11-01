@@ -1,6 +1,6 @@
-package dev.kodari.airlockauth.mixin;
+package dev.flamedwave.airlockauth.mixin;
 
-import dev.kodari.airlockauth.AirlockAuth;
+import dev.flamedwave.airlockauth.AirlockAuth;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.contents.PlainTextContents;

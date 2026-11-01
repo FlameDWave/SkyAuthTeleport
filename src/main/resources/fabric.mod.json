@@ -7,7 +7,7 @@
   "environment": "server",
   "entrypoints": {
     "main": [
-      "dev.kodari.airlockauth.AirlockAuth"
+      "dev.flamedwave.airlockauth.AirlockAuth"
     ]
   },
   "mixins": [
