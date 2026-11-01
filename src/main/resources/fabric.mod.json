@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "airlockauth",
+  "version": "${version}",
+  "name": "Airlock Auth",
+  "description": "Holds players in isolated login spots until they register or log in.",
+  "environment": "server",
+  "entrypoints": {
+    "main": [
+      "dev.kodari.airlockauth.AirlockAuth"
+    ]
+  },
+  "mixins": [
+    "airlockauth.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": "~26.3",
+    "java": ">=25",
+    "fabric-api": "*"
+  }
+}
