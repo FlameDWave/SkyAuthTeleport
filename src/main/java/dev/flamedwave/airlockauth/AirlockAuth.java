@@ -14,6 +14,9 @@ import net.minecraft.commands.arguments.GameProfileArgument;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.contents.PlainTextContents;
+import net.minecraft.network.protocol.game.ClientboundSetSubtitleTextPacket;
+import net.minecraft.network.protocol.game.ClientboundSetTitleTextPacket;
+import net.minecraft.network.protocol.game.ClientboundSetTitlesAnimationPacket;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -421,9 +424,13 @@ public class AirlockAuth implements ModInitializer {
 		player.setDeltaMovement(Vec3.ZERO);
 		teleportToAuthSpot(player, session);
 
-		String prompt = ACCOUNTS.containsKey(player.getUUID())
+		boolean hasAccount = ACCOUNTS.containsKey(player.getUUID());
+		String prompt = hasAccount
 			? config.loginPrompt()
 			: config.registerPrompt();
+		player.connection.send(new ClientboundSetTitlesAnimationPacket(10, 120, 20));
+		player.connection.send(new ClientboundSetTitleTextPacket(message(hasAccount ? "Login Required" : "Registration Required")));
+		player.connection.send(new ClientboundSetSubtitleTextPacket(message(prompt)));
 		player.sendSystemMessage(message(prompt));
 	}
 

@@ -18,7 +18,7 @@ The set-password command accepts its password as console command input. Use a tr
 
 ## Settings and account data
 
-The first server join creates `airlockauth-config.properties` in the world root. It controls minimum and maximum password length, failed-login limit, lockout duration, authentication timeout, and player-facing authentication messages. Set `login_timeout_seconds=0` to disable the login timeout. Message values support `{attempts}` in `message.incorrect_password` and `{seconds}` in `message.lockout`.
+The first server join creates `airlockauth-config.properties` in the world root. It controls minimum and maximum password length, failed-login limit, lockout duration, authentication timeout, and player-facing authentication messages. When an unauthenticated player joins, the appropriate `/login` or `/register` prompt appears as an on-screen title and in chat. Set `login_timeout_seconds=0` to disable the login timeout. Message values support `{attempts}` in `message.incorrect_password` and `{seconds}` in `message.lockout`.
 
 Account credentials are stored in `airlockauth.properties` in the world root. Each successful account-data save first preserves the previous file as `airlockauth.properties.bak`, then replaces the live file using an atomic move when the filesystem supports it. Account data is also saved when the server begins shutting down. Stop the server before manually restoring the backup.
 
